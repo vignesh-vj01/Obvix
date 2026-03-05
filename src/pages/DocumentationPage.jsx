@@ -17,15 +17,15 @@ import {
   Code,
   Check,
   FileText,
-  Copy
+  Copy,
 } from "lucide-react";
 import mermaid from "mermaid";
-import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 // --- UTILS ---
 function cn(...inputs) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 const slugify = (text) => {
@@ -50,35 +50,38 @@ const getNodeText = (node) => {
 // --- COMPONENTS ---
 
 // Dark Theme Button
-const Button = React.forwardRef(({ className, variant = "default", size = "default", ...props }, ref) => {
-  const variants = {
-    default: "bg-white text-black hover:bg-zinc-200",
-    destructive: "bg-red-900 text-white hover:bg-red-800",
-    outline: "border border-zinc-800 bg-black hover:bg-zinc-900 text-zinc-300",
-    secondary: "bg-zinc-800 text-white hover:bg-zinc-700",
-    ghost: "hover:bg-zinc-800 text-zinc-300 hover:text-white",
-    link: "text-white underline-offset-4 hover:underline",
-  }
-  const sizes = {
-    default: "h-10 px-4 py-2",
-    sm: "h-9 rounded-md px-3",
-    lg: "h-11 rounded-md px-8",
-    icon: "h-10 w-10",
-  }
-  return (
-    <button
-      className={cn(
-        "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-        variants[variant],
-        sizes[size],
-        className
-      )}
-      ref={ref}
-      {...props}
-    />
-  )
-})
-Button.displayName = "Button"
+const Button = React.forwardRef(
+  ({ className, variant = "default", size = "default", ...props }, ref) => {
+    const variants = {
+      default: "bg-white text-black hover:bg-zinc-200",
+      destructive: "bg-red-900 text-white hover:bg-red-800",
+      outline:
+        "border border-zinc-800 bg-black hover:bg-zinc-900 text-zinc-300",
+      secondary: "bg-zinc-800 text-white hover:bg-zinc-700",
+      ghost: "hover:bg-zinc-800 text-zinc-300 hover:text-white",
+      link: "text-white underline-offset-4 hover:underline",
+    };
+    const sizes = {
+      default: "h-10 px-4 py-2",
+      sm: "h-9 rounded-md px-3",
+      lg: "h-11 rounded-md px-8",
+      icon: "h-10 w-10",
+    };
+    return (
+      <button
+        className={cn(
+          "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+          variants[variant],
+          sizes[size],
+          className,
+        )}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+Button.displayName = "Button";
 
 // Dark Theme Input
 const Input = React.forwardRef(({ className, type, ...props }, ref) => {
@@ -87,14 +90,14 @@ const Input = React.forwardRef(({ className, type, ...props }, ref) => {
       type={type}
       className={cn(
         "flex h-10 w-full rounded-md border border-zinc-800 bg-black px-3 py-2 text-sm text-white ring-offset-black file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-        className
+        className,
       )}
       ref={ref}
       {...props}
     />
-  )
-})
-Input.displayName = "Input"
+  );
+});
+Input.displayName = "Input";
 
 // Dark Theme Badge
 function Badge({ className, variant = "default", ...props }) {
@@ -103,20 +106,32 @@ function Badge({ className, variant = "default", ...props }) {
     secondary: "border-transparent bg-zinc-800 text-white hover:bg-zinc-800/80",
     destructive: "border-transparent bg-red-900 text-white hover:bg-red-900/80",
     outline: "text-zinc-400 border-zinc-800 bg-zinc-950",
-  }
+  };
   return (
-    <div className={cn("inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2", variants[variant], className)} {...props} />
-  )
+    <div
+      className={cn(
+        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2",
+        variants[variant],
+        className,
+      )}
+      {...props}
+    />
+  );
 }
 
 // Simplified ScrollArea
-const ScrollArea = React.forwardRef(({ className, children, ...props }, ref) => (
-  <div ref={ref} className={cn("relative overflow-auto custom-scrollbar", className)} {...props}>
-    {children}
-  </div>
-))
-ScrollArea.displayName = "ScrollArea"
-
+const ScrollArea = React.forwardRef(
+  ({ className, children, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn("relative overflow-auto custom-scrollbar", className)}
+      {...props}
+    >
+      {children}
+    </div>
+  ),
+);
+ScrollArea.displayName = "ScrollArea";
 
 const Mermaid = ({ chart }) => {
   const ref = useRef(null);
@@ -136,7 +151,7 @@ const Mermaid = ({ chart }) => {
         primaryBorderColor: "#3f3f46",
         primaryTextColor: "#ffffff",
         lineColor: "#71717a",
-        fontFamily: "inherit"
+        fontFamily: "inherit",
       },
     });
 
@@ -203,7 +218,7 @@ Obvix moves the "Brain" to the browser.
 | **Framer Motion** | Physics-based layout animations |
 | **Shadcn UI** | Accessible component primitives |
 | **Vite** | Build tool & HMR |
-`
+`,
       },
       {
         id: "installation",
@@ -221,7 +236,7 @@ Get up and running in less than 5 minutes.
 
 \`\`\`bash
 # 1. Clone the repo
-git clone https://github.com/Eswarchinthakayala-webdesign/Obvix.git
+git clone https://github.com/vignesh-vj01/Obvix.git
 
 # 2. Enter directory
 cd Obvix
@@ -240,7 +255,7 @@ Create a \`.env.local\` file if you need to override default thresholds:
 VITE_DEFAULT_CONFIDENCE=0.6
 VITE_MAX_DETECTIONS=10
 \`\`\`
-`
+`,
       },
       {
         id: "folder-structure",
@@ -267,7 +282,7 @@ src/
 │   └── constants.js      # COCO class names
 └── App.jsx
 \`\`\`
-`
+`,
       },
       {
         id: "pose-detection-model",
@@ -298,7 +313,7 @@ const detector = await poseDetection.createDetector(
 
 const poses = await detector.estimatePoses(video);
 \`\`\`
-`
+`,
       },
       {
         id: "face-landmarks-model",
@@ -333,12 +348,12 @@ const detector = await faceLandmarksDetection.createDetector(model, {
 const faces = await detector.estimateFaces(video);
 // faces[0].keypoints -> Array of {x, y, z, name}
 \`\`\`
-`
+`,
       },
       {
-         id: "text-recognition",
-         title: "Text Recognition",
-         content: `
+        id: "text-recognition",
+        title: "Text Recognition",
+        content: `
 # Text Recognition (OCR)
 
 Obvix includes optical character recognition capabilities powered by **Tesseract.js**.
@@ -362,12 +377,12 @@ Unlike our other detectors which use TensorFlow.js, this module uses a WebAssemb
 const worker = await createWorker('eng');
 await worker.recognize(videoElement);
 \`\`\`
-         `
+         `,
       },
       {
-         id: "image-classification",
-         title: "Image Classification",
-         content: `
+        id: "image-classification",
+        title: "Image Classification",
+        content: `
 # Image Classification (MobileNet)
 
 General-purpose image tagging using **MobileNet V2**.
@@ -391,9 +406,9 @@ const predictions = await model.classify(videoElement);
 
 // Output: [{ className: 'Egyptian cat', probability: 0.83 }, ...]
 \`\`\`
-         `
-      }
-    ]
+         `,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -431,7 +446,7 @@ sequenceDiagram
 We do **not** use \`setInterval\`.
 1. **Syncing**: \`rAF\` syncs with the monitor's refresh rate (usually 60Hz).
 2. **Throttling**: Browsers automatically pause \`rAF\` when the tab is inactive, saving battery.
-`
+`,
       },
       {
         id: "tensors-memory",
@@ -458,7 +473,7 @@ const detect = async (net, video) => {
   });
 };
 \`\`\`
-`
+`,
       },
       {
         id: "coordinate-systems",
@@ -486,9 +501,9 @@ const style = {
 \`\`\`
 
 This ensures that even if the window resizes, the bounding box stays locked to the object.
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -526,7 +541,7 @@ By adding the \`layoutId\`, Framer automatically interpolates the position chang
   }}
 />
 \`\`\`
-`
+`,
       },
       {
         id: "hud-overlays",
@@ -549,9 +564,9 @@ z-10 -> Canvas Overlay (Drawing)
 z-20 -> HTML Overlay (Interactions)
 z-50 -> Settings Modal
 \`\`\`
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -584,7 +599,7 @@ You can adjust the sensitivity of the AI.
   maxResults={5} 
 />
 \`\`\`
-`
+`,
       },
       {
         id: "supported-classes",
@@ -601,9 +616,9 @@ The model is pre-trained on the COCO (Common Objects in Context) dataset. It can
 - **Accessory**: Backpack, Umbrella, Handbag, Tie, Suitcase.
 - **Electronic**: Cell phone, Mouse, Remote, Keyboard, TV, Laptop.
 - **Kitchen**: Bottle, Wine glass, Cup, Fork, Knife, Spoon, Bowl.
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -635,7 +650,7 @@ const loadCustomModel = async () => {
   return model;
 }
 \`\`\`
-`
+`,
       },
       {
         id: "performance-mode",
@@ -662,9 +677,9 @@ const loop = (timestamp) => {
   requestAnimationFrame(loop);
 }
 \`\`\`
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -698,7 +713,7 @@ Located in \`public/manifest.json\`:
 
 ## iOS Camera Constraints
 **Note:** iOS Safari has strict memory limits. If the app crashes on iPhone, try switching to the \`lite_mobilenet_v2\` model.
-`
+`,
       },
       {
         id: "https-security",
@@ -716,9 +731,9 @@ Browsers **block** \`navigator.mediaDevices.getUserMedia\` on insecure origins.
 
 ## Vercel Deployment
 We recommend Vercel as it provides free SSL certificates automatically.
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -753,9 +768,9 @@ The main container component.
   onDetect={(objs) => console.log(objs)}
 />
 \`\`\`
-`
-      }
-    ]
+`,
+      },
+    ],
   },
   // ------------------------------------------------------------------
   // 8. ACCESSIBILITY (A11Y)
@@ -790,7 +805,7 @@ We use an invisible \`aria-live\` region to announce detections.
 ## Frequency Limiting
 
 **Warning:** Don't update the live region every frame (60 times a second), or the screen reader will crash or stutter. Throttle updates to once every 2-3 seconds.
-`
+`,
       },
       {
         id: "voice-feedback",
@@ -819,9 +834,9 @@ if (prediction.class === 'person' && !hasSpoken) {
 
 ## Browser Support
 This API is supported in Chrome, Edge, Safari, and Firefox without external libraries.
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -862,7 +877,7 @@ graph TD
 \`\`\`
 
 If two boxes overlap by more than 50% (IoU > 0.5), we assume they are the same object and delete the one with the lower confidence score.
-`
+`,
       },
       {
         id: "webgl-acceleration",
@@ -888,9 +903,9 @@ const light = tf.tidy(() => {
   return tf.image.resizeBilinear(tf.browser.fromPixels(video), [300, 300]);
 });
 \`\`\`
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -929,9 +944,9 @@ export const useWebcam = () => {
   };
 };
 \`\`\`
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 
   // ------------------------------------------------------------------
@@ -963,7 +978,7 @@ We use **Prettier** and **ESLint**. Run the linter before pushing:
 \`\`\`bash
 npm run lint
 \`\`\`
-`
+`,
       },
       {
         id: "license",
@@ -979,9 +994,9 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so.
-`
-      }
-    ]
+`,
+      },
+    ],
   },
 ];
 
@@ -994,7 +1009,6 @@ const SidebarContent = ({
   docsData,
 }) => (
   <aside className="flex flex-col h-full bg-black border-r pt-10 sm:mt-10 border-zinc-900">
-
     <ScrollArea className="flex-1 px-2 sm:px-4 py-4 sm:py-6">
       <div className="space-y-8 pb-20">
         {docsData.map((section, idx) => (
@@ -1015,7 +1029,7 @@ const SidebarContent = ({
                     "relative w-full cursor-pointer text-left px-3 py-2 rounded-md text-sm transition-all",
                     activeDocId === item.id
                       ? "font-medium text-white bg-zinc-900"
-                      : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50"
+                      : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50",
                   )}
                 >
                   {item.title}
@@ -1040,66 +1054,76 @@ export default function DocumentationPage() {
 
   useEffect(() => {
     if (contentRef.current) {
-        contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      contentRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [activeDocId]);
 
   const filteredDocs = useMemo(() => {
     if (!searchQuery) return DOCS_DATA;
     const lowerQuery = searchQuery.toLowerCase();
-    return DOCS_DATA.map(section => {
-      const filteredItems = section.items.filter(item => 
-        item.title.toLowerCase().includes(lowerQuery) || 
-        item.content.toLowerCase().includes(lowerQuery)
+    return DOCS_DATA.map((section) => {
+      const filteredItems = section.items.filter(
+        (item) =>
+          item.title.toLowerCase().includes(lowerQuery) ||
+          item.content.toLowerCase().includes(lowerQuery),
       );
       if (filteredItems.length > 0) return { ...section, items: filteredItems };
       return null;
     }).filter(Boolean);
   }, [searchQuery]);
 
-  const flatDocs = useMemo(() => DOCS_DATA.flatMap(s => s.items), []);
-  const currentIndex = flatDocs.findIndex(i => i.id === activeDocId);
+  const flatDocs = useMemo(() => DOCS_DATA.flatMap((s) => s.items), []);
+  const currentIndex = flatDocs.findIndex((i) => i.id === activeDocId);
   const activeDoc = flatDocs[currentIndex];
   const prevDoc = flatDocs[currentIndex - 1];
   const nextDoc = flatDocs[currentIndex + 1];
 
   const toc = useMemo(() => {
     if (!activeDoc) return [];
-    return activeDoc.content.match(/^## (.*$)/gm)?.map(h => h.replace('## ', '')) || [];
+    return (
+      activeDoc.content
+        .match(/^## (.*$)/gm)
+        ?.map((h) => h.replace("## ", "")) || []
+    );
   }, [activeDoc]);
 
   const handleScrollToSection = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   return (
-    <div className="flex h-screen bg-black text-white font-sans overflow-hidden selection:bg-zinc-800 selection:text-white" data-color-mode="dark">
-      
+    <div
+      className="flex h-screen bg-black text-white font-sans overflow-hidden selection:bg-zinc-800 selection:text-white"
+      data-color-mode="dark"
+    >
       {/* DESKTOP SIDEBAR */}
       <aside className="w-72 border-r border-zinc-900 hidden xl:flex z-30 fixed inset-y-0 left-0 bg-black">
-        <SidebarContent 
-            activeDocId={activeDocId} 
-            setActiveDocId={setActiveDocId} 
-            docsData={filteredDocs}
+        <SidebarContent
+          activeDocId={activeDocId}
+          setActiveDocId={setActiveDocId}
+          docsData={filteredDocs}
         />
       </aside>
 
       {/* MOBILE HEADER */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 xl:hidden">
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-            <div className="absolute inset-y-0 left-0 w-80 bg-black border-r border-zinc-900 shadow-2xl">
-                <SidebarContent 
-                    activeDocId={activeDocId} 
-                    setActiveDocId={setActiveDocId} 
-                    docsData={filteredDocs}
-                    onNavigate={() => setIsMobileMenuOpen(false)}
-                />
-            </div>
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="absolute inset-y-0 left-0 w-80 bg-black border-r border-zinc-900 shadow-2xl">
+            <SidebarContent
+              activeDocId={activeDocId}
+              setActiveDocId={setActiveDocId}
+              docsData={filteredDocs}
+              onNavigate={() => setIsMobileMenuOpen(false)}
+            />
+          </div>
         </div>
       )}
 
@@ -1107,46 +1131,64 @@ export default function DocumentationPage() {
       <main className="flex-1 flex flex-col min-w-0 relative xl:pl-72 pt-10 bg-black">
         <header className="sticky top-0 z-40 h-16 border-b border-zinc-900 flex items-center justify-between px-6 bg-black/80 backdrop-blur-xl">
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="xl:hidden cursor-pointer -ml-2 text-zinc-400" onClick={() => setIsMobileMenuOpen(true)}>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="xl:hidden cursor-pointer -ml-2 text-zinc-400"
+              onClick={() => setIsMobileMenuOpen(true)}
+            >
               <Menu className="h-5 w-5" />
             </Button>
             <div className="hidden md:flex items-center gap-2 text-sm">
-                <span className="text-zinc-500">Docs</span>
-                <ChevronRight className="w-3 h-3 text-zinc-600" />
-                <span className="font-medium text-zinc-200">{activeDoc?.title}</span>
+              <span className="text-zinc-500">Docs</span>
+              <ChevronRight className="w-3 h-3 text-zinc-600" />
+              <span className="font-medium text-zinc-200">
+                {activeDoc?.title}
+              </span>
             </div>
           </div>
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500" />
-            <Input 
-                placeholder="Search documentation..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 pr-9 bg-zinc-900/50 border-zinc-800 focus:bg-zinc-900 focus:border-zinc-700 h-9 transition-all"
+            <Input
+              placeholder="Search documentation..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9 pr-9 bg-zinc-900/50 border-zinc-800 focus:bg-zinc-900 focus:border-zinc-700 h-9 transition-all"
             />
             {searchQuery && (
-                <button onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white">
-                    <X className="w-3.5 h-3.5" />
-                </button>
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
             )}
           </div>
         </header>
 
         <ScrollArea ref={contentRef} className="flex-1">
-           <div className="max-w-[1600px] mx-auto flex min-h-[calc(100vh-4rem)]">
-              <div className="flex-1 min-w-0 p-8 pb-20 lg:p-12 lg:pr-16">
-                 <motion.div
-                    key={activeDocId}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                 >
-                    <div className="flex items-center gap-3 mb-8">
-                        <Badge variant="outline" className="border-zinc-800 text-zinc-400 bg-zinc-900/30 px-3 py-1 text-xs tracking-wide">v1.0.0</Badge>
-                        <span className="text-xs text-zinc-600 font-mono uppercase tracking-wider">Last updated today</span>
-                    </div>
+          <div className="max-w-[1600px] mx-auto flex min-h-[calc(100vh-4rem)]">
+            <div className="flex-1 min-w-0 p-8 pb-20 lg:p-12 lg:pr-16">
+              <motion.div
+                key={activeDocId}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="flex items-center gap-3 mb-8">
+                  <Badge
+                    variant="outline"
+                    className="border-zinc-800 text-zinc-400 bg-zinc-900/30 px-3 py-1 text-xs tracking-wide"
+                  >
+                    v1.0.0
+                  </Badge>
+                  <span className="text-xs text-zinc-600 font-mono uppercase tracking-wider">
+                    Last updated today
+                  </span>
+                </div>
 
-                    <div className="prose prose-invert prose-zinc max-w-none 
+                <div
+                  className="prose prose-invert prose-zinc max-w-none 
                         prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-white
                         prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl
                         prose-p:text-zinc-400 prose-p:leading-relaxed
@@ -1156,150 +1198,201 @@ export default function DocumentationPage() {
                         prose-strong:text-white prose-strong:font-semibold
                         prose-ul:list-disc prose-ul:marker:text-zinc-600
                         prose-img:rounded-xl prose-img:border prose-img:border-zinc-800
-                    ">
-<MDEditor.Markdown 
-  source={activeDoc?.content} 
-  components={{
-    // ----------------------------------------------------
-    // 1. CUSTOM CODE BLOCK (Green Button Style)
-    // ----------------------------------------------------
-    code: ({ inline, children, className, ...props }) => {
-      const match = /language-(\w+)/.exec(className || "");
-      const codeContent = getNodeText(children);
+                    "
+                >
+                  <MDEditor.Markdown
+                    source={activeDoc?.content}
+                    components={{
+                      // ----------------------------------------------------
+                      // 1. CUSTOM CODE BLOCK (Green Button Style)
+                      // ----------------------------------------------------
+                      code: ({ inline, children, className, ...props }) => {
+                        const match = /language-(\w+)/.exec(className || "");
+                        const codeContent = getNodeText(children);
 
-      // Handle Mermaid Diagrams
-      if (!inline && match && match[1] === "mermaid") {
-        return <Mermaid chart={codeContent} />;
-      }
+                        // Handle Mermaid Diagrams
+                        if (!inline && match && match[1] === "mermaid") {
+                          return <Mermaid chart={codeContent} />;
+                        }
 
-      // Handle Standard Code Blocks
-      if (!inline && match) {
-        return (
-          <div className="relative my-6 rounded-lg border border-zinc-800 bg-zinc-950/50 overflow-hidden group">
-            
-            {/* HEADER */}
-            <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-800 bg-zinc-900/40">
-              <span className="text-xs font-mono font-medium text-zinc-500 uppercase">
-                {match[1]}
-              </span>
+                        // Handle Standard Code Blocks
+                        if (!inline && match) {
+                          return (
+                            <div className="relative my-6 rounded-lg border border-zinc-800 bg-zinc-950/50 overflow-hidden group">
+                              {/* HEADER */}
+                              <div className="flex items-center justify-between px-4 py-2 border-b border-zinc-800 bg-zinc-900/40">
+                                <span className="text-xs font-mono font-medium text-zinc-500 uppercase">
+                                  {match[1]}
+                                </span>
+                              </div>
 
-     
+                              {/* CONTENT */}
+                              <div className="p-4 overflow-x-auto">
+                                <code
+                                  className={`${className} font-mono text-sm leading-relaxed`}
+                                  {...props}
+                                >
+                                  {children}
+                                </code>
+                              </div>
+                            </div>
+                          );
+                        }
+
+                        // Handle Inline Code
+                        return (
+                          <code
+                            className="px-1.5 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700/50 text-blue-200 font-mono text-[0.9em]"
+                            {...props}
+                          >
+                            {children}
+                          </code>
+                        );
+                      },
+
+                      // ----------------------------------------------------
+                      // 2. FULL WIDTH TABLE (Forced Expansion)
+                      // ----------------------------------------------------
+                      table: ({ children, ...props }) => (
+                        <div className="my-8 w-full !w-full rounded-xl border border-zinc-800 bg-zinc-950/30 overflow-hidden">
+                          {/* 'min-w-full' ensures it stretches even in flex containers */}
+                          <div className="w-full overflow-x-auto">
+                            <table
+                              className="min-w-full w-full text-left text-sm"
+                              {...props}
+                            >
+                              {children}
+                            </table>
+                          </div>
+                        </div>
+                      ),
+                      thead: ({ children, ...props }) => (
+                        <thead
+                          className="bg-zinc-900/50 border-b border-zinc-800"
+                          {...props}
+                        >
+                          {children}
+                        </thead>
+                      ),
+                      tbody: ({ children, ...props }) => (
+                        <tbody
+                          className="divide-y divide-zinc-800/50"
+                          {...props}
+                        >
+                          {children}
+                        </tbody>
+                      ),
+                      tr: ({ children, ...props }) => (
+                        <tr
+                          className="transition-colors hover:bg-zinc-900/30"
+                          {...props}
+                        >
+                          {children}
+                        </tr>
+                      ),
+                      th: ({ children, ...props }) => (
+                        <th
+                          className="px-6 py-4 font-medium text-zinc-300 uppercase tracking-wider text-xs whitespace-nowrap"
+                          {...props}
+                        >
+                          {children}
+                        </th>
+                      ),
+                      td: ({ children, ...props }) => (
+                        <td
+                          className="px-6 py-4 text-zinc-400 whitespace-nowrap"
+                          {...props}
+                        >
+                          {children}
+                        </td>
+                      ),
+
+                      // ----------------------------------------------------
+                      // OTHER ELEMENTS
+                      // ----------------------------------------------------
+                      blockquote: ({ children, ...props }) => (
+                        <blockquote
+                          className="my-6 border-l-2 border-blue-500 pl-6 italic text-zinc-400"
+                          {...props}
+                        >
+                          {children}
+                        </blockquote>
+                      ),
+                      hr: () => <hr className="my-10 border-zinc-800" />,
+                      a: ({ children, href, ...props }) => (
+                        <a
+                          href={href}
+                          className="text-blue-400 hover:text-blue-300 hover:underline underline-offset-4 decoration-zinc-700"
+                          {...props}
+                        >
+                          {children}
+                        </a>
+                      ),
+                    }}
+                    style={{
+                      backgroundColor: "transparent",
+                      color: "inherit",
+                      fontSize: "1.05rem",
+                    }}
+                  />
+                </div>
+
+                <div className="mt-20 pt-10 border-t border-zinc-900 flex justify-between gap-6">
+                  {prevDoc && (
+                    <Button
+                      variant="outline"
+                      onClick={() => setActiveDocId(prevDoc.id)}
+                      className="flex-1 sm:flex-none cursor-pointer h-auto py-4 px-6 flex-col items-start gap-1.5 border-zinc-800 bg-black hover:bg-zinc-900 transition-all group"
+                    >
+                      <span className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-zinc-500 group-hover:text-zinc-400">
+                        <ArrowLeft className="w-3 h-3" /> Previous
+                      </span>
+                      <span className="text-base hidden sm:block font-medium text-zinc-200 group-hover:text-white">
+                        {prevDoc.title}
+                      </span>
+                    </Button>
+                  )}
+                  <div className="flex-1 sm:flex-none" />
+                  {nextDoc && (
+                    <Button
+                      variant="outline"
+                      onClick={() => setActiveDocId(nextDoc.id)}
+                      className="flex-1 cursor-pointer sm:flex-none h-auto py-4 px-6 flex-col items-end gap-1.5 border-zinc-800 bg-black hover:bg-zinc-900 transition-all group"
+                    >
+                      <span className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-zinc-500 group-hover:text-zinc-400">
+                        Next <ChevronRight className="w-3 h-3" />
+                      </span>
+                      <span className="text-base hidden sm:block font-medium text-zinc-200 group-hover:text-white">
+                        {nextDoc.title}
+                      </span>
+                    </Button>
+                  )}
+                </div>
+              </motion.div>
             </div>
 
-            {/* CONTENT */}
-            <div className="p-4 overflow-x-auto">
-              <code className={`${className} font-mono text-sm leading-relaxed`} {...props}>
-                {children}
-              </code>
+            {/* TABLE OF CONTENTS - DESKTOP */}
+            <div className="hidden lg:block w-64 shrink-0 border-l border-zinc-900">
+              <div className="sticky top-16 p-8">
+                <h4 className="text-xs font-bold uppercase tracking-widest mb-4 text-zinc-500">
+                  On This Page
+                </h4>
+                <ul className="space-y-3 text-sm border-l border-zinc-900 relative">
+                  {toc.map((item, idx) => (
+                    <li key={idx} className="-ml-px">
+                      <a
+                        href={`#${slugify(item)}`}
+                        onClick={(e) => handleScrollToSection(e, slugify(item))}
+                        className="block pl-4 border-l border-transparent hover:border-white text-zinc-500 hover:text-white transition-colors py-1"
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-        );
-      }
-
-      // Handle Inline Code
-      return (
-        <code 
-          className="px-1.5 py-0.5 rounded-md bg-zinc-800/50 border border-zinc-700/50 text-blue-200 font-mono text-[0.9em]" 
-          {...props}
-        >
-          {children}
-        </code>
-      );
-    },
-
-    // ----------------------------------------------------
-    // 2. FULL WIDTH TABLE (Forced Expansion)
-    // ----------------------------------------------------
-    table: ({ children, ...props }) => (
-      <div className="my-8 w-full !w-full rounded-xl border border-zinc-800 bg-zinc-950/30 overflow-hidden">
-        {/* 'min-w-full' ensures it stretches even in flex containers */}
-        <div className="w-full overflow-x-auto">
-          <table className="min-w-full w-full text-left text-sm" {...props}>
-            {children}
-          </table>
-        </div>
-      </div>
-    ),
-    thead: ({ children, ...props }) => (
-      <thead className="bg-zinc-900/50 border-b border-zinc-800" {...props}>
-        {children}
-      </thead>
-    ),
-    tbody: ({ children, ...props }) => (
-      <tbody className="divide-y divide-zinc-800/50" {...props}>
-        {children}
-      </tbody>
-    ),
-    tr: ({ children, ...props }) => (
-      <tr className="transition-colors hover:bg-zinc-900/30" {...props}>
-        {children}
-      </tr>
-    ),
-    th: ({ children, ...props }) => (
-      <th className="px-6 py-4 font-medium text-zinc-300 uppercase tracking-wider text-xs whitespace-nowrap" {...props}>
-        {children}
-      </th>
-    ),
-    td: ({ children, ...props }) => (
-      <td className="px-6 py-4 text-zinc-400 whitespace-nowrap" {...props}>
-        {children}
-      </td>
-    ),
-    
-    // ----------------------------------------------------
-    // OTHER ELEMENTS
-    // ----------------------------------------------------
-    blockquote: ({ children, ...props }) => (
-      <blockquote className="my-6 border-l-2 border-blue-500 pl-6 italic text-zinc-400" {...props}>
-        {children}
-      </blockquote>
-    ),
-    hr: () => <hr className="my-10 border-zinc-800" />,
-    a: ({ children, href, ...props }) => (
-       <a href={href} className="text-blue-400 hover:text-blue-300 hover:underline underline-offset-4 decoration-zinc-700" {...props}>
-          {children}
-       </a>
-    ),
-  }}
-  style={{ backgroundColor: "transparent", color: "inherit", fontSize: "1.05rem" }} 
-/>
-                    </div>
-                    
-                    <div className="mt-20 pt-10 border-t border-zinc-900 flex justify-between gap-6">
-                        {prevDoc && (
-                            <Button variant="outline" onClick={() => setActiveDocId(prevDoc.id)} className="flex-1 sm:flex-none cursor-pointer h-auto py-4 px-6 flex-col items-start gap-1.5 border-zinc-800 bg-black hover:bg-zinc-900 transition-all group">
-                                <span className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-zinc-500 group-hover:text-zinc-400"><ArrowLeft className="w-3 h-3" /> Previous</span>
-                                <span className="text-base hidden sm:block font-medium text-zinc-200 group-hover:text-white">{prevDoc.title}</span>
-                            </Button>
-                        )}
-                        <div className="flex-1 sm:flex-none" />
-                        {nextDoc && (
-                            <Button variant="outline" onClick={() => setActiveDocId(nextDoc.id)} className="flex-1 cursor-pointer sm:flex-none h-auto py-4 px-6 flex-col items-end gap-1.5 border-zinc-800 bg-black hover:bg-zinc-900 transition-all group">
-                                <span className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-zinc-500 group-hover:text-zinc-400">Next <ChevronRight className="w-3 h-3" /></span>
-                                <span className="text-base hidden sm:block font-medium text-zinc-200 group-hover:text-white">{nextDoc.title}</span>
-                            </Button>
-                        )}
-                    </div>
-                 </motion.div>
-              </div>
-
-              {/* TABLE OF CONTENTS - DESKTOP */}
-              <div className="hidden lg:block w-64 shrink-0 border-l border-zinc-900">
-                 <div className="sticky top-16 p-8">
-                    <h4 className="text-xs font-bold uppercase tracking-widest mb-4 text-zinc-500">On This Page</h4>
-                    <ul className="space-y-3 text-sm border-l border-zinc-900 relative">
-                        {toc.map((item, idx) => (
-                            <li key={idx} className="-ml-px">
-                                <a href={`#${slugify(item)}`} onClick={(e) => handleScrollToSection(e, slugify(item))} className="block pl-4 border-l border-transparent hover:border-white text-zinc-500 hover:text-white transition-colors py-1">
-                                    {item}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-
-                 </div>
-              </div>
-           </div>
         </ScrollArea>
       </main>
     </div>
